@@ -763,7 +763,7 @@ export class SearchViewlet extends Viewlet {
 		}).style({ position: 'relative' }).getHTMLElement();
 
 		this.queryDetails = builder.div({ 'class': ['query-details', 'separator'] }, (builder) => {
-			builder.div({ 'class': 'more', 'tabindex': 0, 'role': 'menuitem', 'title': nls.localize('moreSearch', "Toggle Search Details") })
+			builder.div({ 'class': 'more', 'tabindex': 0, 'role': 'button', 'title': nls.localize('moreSearch', "Toggle Search Details") })
 				.on(dom.EventType.CLICK, (e) => {
 					dom.EventHelper.stop(e);
 					this.toggleFileTypes();
@@ -844,6 +844,7 @@ export class SearchViewlet extends Viewlet {
 					actions: [this.instantiationService.createInstance(ConfigureGlobalExclusionsAction)]
 				});
 				this.inputPatternGlobalExclusions.inputElement.readOnly = true;
+				$(this.inputPatternGlobalExclusions.inputElement).attr('aria-readonly', 'true');
 				$(this.inputPatternGlobalExclusions.inputElement).addClass('disabled');
 			}).hide();
 		}).getHTMLElement();
